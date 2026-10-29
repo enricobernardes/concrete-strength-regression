@@ -1,10 +1,15 @@
-[README_concrete.md](https://github.com/user-attachments/files/34157007/README_concrete.md)
 # Previsão da resistência do concreto (R² 0,91)
 
 Modelo de regressão que estima a resistência à compressão do concreto (MPa) a partir da composição do traço e da idade de cura.
 
+## Resumo
+
+Com o traço em mãos, dá para estimar a resistência do concreto antes do ensaio, com erro médio de ~3,5 MPa. Isso antecipa a decisão: ganha prazo de obra, evita retrabalho e, sem superdimensionar a mistura, economiza cimento, um dos insumos mais caros do traço. O modelo não substitui o ensaio, que segue obrigatório.
+
+O Random Forest foi o melhor modelo: explica 91% da variação da resistência (R² 0,91), enquanto o chute pela mediana erra em média ~14 MPa. Cimento, idade e superplastificante são os fatores mais ligados à resistência.
+
 ## Problema
-O ensaio de resistência leva dias. Estimar a resistência pelo traço permite ajustar a mistura antes, reduzindo retrabalho e desperdício de recursos financeiros na obra.
+A resistência do concreto só é confirmada no ensaio, em geral aos 28 dias. Até lá, ajustes no traço são decididos sem esse dado.
 
 ## Dados
 - [Concrete Compressive Strength (Kaggle)](https://www.kaggle.com/datasets/elikplim/concrete-compressive-strength-data-set), originalmente do repositório UCI
@@ -26,11 +31,6 @@ O ensaio de resistência leva dias. Estimar a resistência pelo traço permite a
 | KNN | 7,13 | 9,19 | 0,72 |
 | **Random Forest** | **3,50** | **5,26** | **0,91** |
 
-## Resumo
-
-Com o traço em mãos, dá para estimar a resistência do concreto antes do ensaio, com erro médio de ~3,5 MPa. Isso antecipa a decisão: ganha prazo de obra, evita retrabalho e, sem superdimensionar a mistura, economiza cimento, um dos insumos mais caros do traço. O modelo não substitui o ensaio, que segue obrigatório.
-
-O Random Forest foi o melhor modelo: explica 91% da variação da resistência (R² 0,91), enquanto o chute pela mediana erra em média ~14 MPa. Cimento, idade e superplastificante são os fatores mais ligados à resistência.
 
 ## Próximos passos
 - Ajuste de hiperparâmetros (`GridSearchCV`) e validação cruzada
